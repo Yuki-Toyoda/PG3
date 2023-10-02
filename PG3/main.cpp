@@ -22,7 +22,7 @@ int RecursionWage(int workTime, int preWage = 100) {
 		return 0;
 	}
 
-	// 一時間当たりの賃金
+	// 残り何時間辺りの賃金
 	printf("残り%d時間時点 ... %d\n", workTime - 1, preWage);
 
 	return preWage + RecursionWage(workTime - 1, wage);
