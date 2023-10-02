@@ -29,6 +29,6 @@ int main() {
 	// double型
 	printf("%lf\n", Min<double>(1.8f, 9.4f));
 	// char型
-	Min<char>('1', '3');
+	Min<char>('i', 'o');
 	return 0;
 }
