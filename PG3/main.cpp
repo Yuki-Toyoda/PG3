@@ -24,7 +24,7 @@ int GetRandomValue() {
 /// <returns>正解か否か</returns>
 void CallBack(Func f, int value, int second) {
 	// 結果は
-	printf("結果は");
+	printf("\n結果は");
 	for (int i = 0; i < second; i++) {
 		printf(".");
 		Sleep(1000);
@@ -32,12 +32,12 @@ void CallBack(Func f, int value, int second) {
 
 	// ランダムな値を取得し偶数か奇数か求める
 	int randomValue = f();
-	printf("\nサイコロの目 : %d", randomValue);
+	printf(" サイコロの目 : %d   ", randomValue);
 	// 取得した値と入力値が同じなら
 	if (randomValue % 2 == value % 2)
-		printf("正解");
+		printf("正解\n\n");
 	else
-		printf("不正解");
+		printf("不正解\n\n");
 }
 
 // メイン関数
@@ -54,7 +54,18 @@ int main() {
 
 	while (true)
 	{
-		
+		printf("0(丁) か 1(半)を入力してください : ");
+		// 入力受付
+		scanf_s("%d", &selectedValue);
+
+		if (selectedValue < 2) {
+			// 当たっているか
+			CallBack(func, selectedValue, 3);
+		}
+		else {
+			// 0 ~ 1の値を入力するよう促す
+			printf("0 ~ 1の値を入力してください\n\n");
+		}
 	}
 
 	return 0;
