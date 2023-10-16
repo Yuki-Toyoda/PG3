@@ -1,7 +1,61 @@
 #include <stdio.h>
+#include <Windows.h>
+#include <stdlib.h>
+#include <time.h>
+
+// 関数ポインタ定義
+typedef int (*Func)();
+
+/// <summary>
+/// ランダムな値を返す関数(1 ~ 6)
+/// </summary>
+/// <returns>ランダムな値(1 ~ 6)</returns>
+int GetRandomValue() {
+	int randomValue = (rand() % 6) + 1;
+	return randomValue;
+}
+
+/// <summary>
+/// コールバック関数
+/// </summary>
+/// <param name="f">関数</param>
+/// <param name="value">入力数値</param>
+/// <param name="second">待ち時間</param>
+/// <returns>正解か否か</returns>
+void CallBack(Func f, int value, int second) {
+	// 結果は
+	printf("結果は");
+	for (int i = 0; i < second; i++) {
+		printf(".");
+		Sleep(1000);
+	}
+
+	// ランダムな値を取得し偶数か奇数か求める
+	int randomValue = f();
+	printf("\nサイコロの目 : %d", randomValue);
+	// 取得した値と入力値が同じなら
+	if (randomValue % 2 == value % 2)
+		printf("正解");
+	else
+		printf("不正解");
+}
 
 // メイン関数
 int main() {
-	
+	// 乱数初期化
+	srand((unsigned int)time(nullptr));
+
+	// 空の関数ポインタ定義
+	Func func;
+	// 関数ポインタに関数代入
+	func = &GetRandomValue;
+
+	int selectedValue = 0;
+
+	while (true)
+	{
+		
+	}
+
 	return 0;
 }
