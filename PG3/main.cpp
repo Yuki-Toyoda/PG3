@@ -19,7 +19,6 @@ int main() {
 	Calc<double, int> doubleToIntCalc(3.0, 5); // double int
 	Calc<double, float> doubleToFloatCalc(12.85, 25.0f); // double float
 
-
 	// int型
 	printf("比較する値 : int %d, int %d, 最小値 = %d\n", intCalc.a, intCalc.b, intCalc.Min());
 	printf("比較する値 : int %d, float %4.2f, 最小値 = %d\n", intToFloatCalc.a, intToFloatCalc.b, intToFloatCalc.Min());
