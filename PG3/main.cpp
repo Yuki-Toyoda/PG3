@@ -16,13 +16,13 @@ int GetRandomValue() {
 }
 
 /// <summary>
-/// コールバック関数
+/// 結果表示関数
 /// </summary>
 /// <param name="f">関数</param>
 /// <param name="value">入力数値</param>
 /// <param name="second">待ち時間</param>
 /// <returns>正解か否か</returns>
-void CallBack(Func f, int value, int second) {
+void DispResult(Func f, int value, int second) {
 	// 結果は
 	printf("\n結果は");
 	for (int i = 0; i < second; i++) {
@@ -60,7 +60,7 @@ int main() {
 
 		if (selectedValue < 2) {
 			// 当たっているか
-			CallBack(func, selectedValue, 3);
+			DispResult(func, selectedValue, 3);
 		}
 		else {
 			// 0 ~ 1の値を入力するよう促す
