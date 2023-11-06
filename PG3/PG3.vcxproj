@@ -20,6 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NBox.cpp" />
+    <ClCompile Include="HiJet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseCar.h" />
+    <ClInclude Include="HiJet.h" />
+    <ClInclude Include="NBox.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
