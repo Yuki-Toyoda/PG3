@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <Windows.h>
 #include <stdlib.h>
 #include <time.h>
@@ -42,6 +42,7 @@ void DispResult(Func f, int value, int second) {
 
 // メイン関数
 int main() {
+	//SetConsoleOutputCP(65001);
 	// 乱数初期化
 	srand((unsigned int)time(nullptr));
 
