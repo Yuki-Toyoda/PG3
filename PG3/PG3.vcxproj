@@ -25,7 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
-    <ClInclude Include="Ishape.h" />
+    <ClInclude Include="IShape.h" />
     <ClInclude Include="RectAngle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
