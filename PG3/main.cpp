@@ -9,8 +9,9 @@ int main() {
 	enemy_->Initialize(); // 初期化
 
 	// 更新処理を呼び続ける
-	while (1)
+	while (1) {
 		enemy_->Update();
+	}	
 
 	// 敵のインスタンス削除
 	delete enemy_;
