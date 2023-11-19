@@ -4,22 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-void SetTimeOut(int second, int selectValue, std::function<int()> func) {
-	// 結果は
-	printf("\n結果は");
-	for (int i = 0; i < second; i++) {
-		printf(".");
-		Sleep(1000);
-	}
-
-	// ランダムな値を取得し偶数か奇数か求める
-	int randomValue = func();
-	printf(" サイコロの目 : %d   ", randomValue);
-	// 取得した値と入力値が同じなら
-	if (randomValue % 2 == selectValue)
-		printf("正解\n\n");
-	else
-		printf("不正解\n\n");
+int GetRandomValue() {
+	return (rand() % 6) + 1;
 }
 
 // メイン関数
@@ -30,8 +16,22 @@ int main() {
 
 	int selectedValue;
 
-	std::function<int()> GetRandomValue = []() {
-		return (rand() % 6) + 1; };
+	std::function<void(int i)> SetTimeOut = [&selectedValue](int randomValue) {
+		// 結果は
+		printf("\n結果は");
+		for (int i = 0; i < 3; i++) {
+			printf(".");
+			Sleep(1000);
+		}
+
+		// ランダムな値を取得し偶数か奇数か求める
+		printf(" サイコロの目 : %d   ", randomValue);
+		// 取得した値と入力値が同じなら
+		if (randomValue % 2 == selectedValue)
+			printf("正解\n\n");
+		else
+			printf("不正解\n\n");
+	};
 
 	while (true)
 	{
@@ -40,7 +40,7 @@ int main() {
 		scanf_s("%d", &selectedValue);
 
 		if (selectedValue < 2) {
-			SetTimeOut(3, selectedValue, GetRandomValue);
+			SetTimeOut(GetRandomValue());
 		}
 		else {
 			// 0 ~ 1の値を入力するよう促す
