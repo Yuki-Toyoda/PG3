@@ -21,7 +21,7 @@ public: // メンバ関数
 	/// <summary>
 	/// メンバ変数の情報を表示する関数
 	/// </summary>
-	void ShowInfo() 
+	virtual void ShowInfo() 
 	{
 		printf("この車は ... ");
 		printf("分類 %s : ", carClass_.c_str()); // 分類

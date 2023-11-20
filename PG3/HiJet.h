@@ -16,4 +16,15 @@ public: // メンバ関数
 	/// </summary>
 	void Initialize()override;
 
+	/// <summary>
+	/// メンバ変数の情報を表示する関数
+	/// </summary>
+	void ShowInfo() override;
+
+private: // メンバ変数
+
+	// 荷台の幅
+	float platFormWidth_;  // 横
+	float platFormHeight_; // 縦
+
 };
