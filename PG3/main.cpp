@@ -4,40 +4,51 @@
 #include <time.h>
 
 // 関数ポインタ定義
-typedef int (*Func)();
+typedef void (*Func)(bool b);
 
 /// <summary>
-/// ランダムな値を返す関数(1 ~ 6)
+/// 入力された値を元にあっているかどうか検証
 /// </summary>
-/// <returns>ランダムな値(1 ~ 6)</returns>
-int GetRandomValue() {
+/// <returns>入力値</returns>
+bool GetResult(int value) {
+	// サイコロを振る
 	int randomValue = (rand() % 6) + 1;
-	return randomValue;
+	printf("サイコロの目 : %d   ", randomValue);
+	if (randomValue % 2 == value % 2) {
+		return true;
+	}
+	return false;
 }
 
 /// <summary>
 /// 結果表示関数
 /// </summary>
-/// <param name="f">関数</param>
-/// <param name="value">入力数値</param>
-/// <param name="second">待ち時間</param>
+/// <param name="result">入力数値</param>
 /// <returns>正解か否か</returns>
-void DispResult(Func f, int value, int second) {
+void DisplayResult(bool result) {
 	// 結果は
-	printf("\n結果は");
-	for (int i = 0; i < second; i++) {
-		printf(".");
-		Sleep(1000);
-	}
+	printf("\n結果は...");
 
-	// ランダムな値を取得し偶数か奇数か求める
-	int randomValue = f();
-	printf(" サイコロの目 : %d   ", randomValue);
 	// 取得した値と入力値が同じなら
-	if (randomValue % 2 == value % 2)
+	if (result) {
 		printf("正解\n\n");
-	else
+	}	
+	else {
 		printf("不正解\n\n");
+	}
+}
+
+/// <summary>
+///	引数で指定した秒数がたった後、引数で指定した関数を実行する
+/// </summary>
+/// <param name="second">待機秒数</param>
+/// <param name="func">関数</param>
+void SetTimeOut(int second, Func func, int selectedValue) {
+	// 引数で指定した秒数分待機
+	Sleep(second * 1000);
+
+	// 引数の関数を実行
+	func(GetResult(selectedValue));
 }
 
 // メイン関数
@@ -46,12 +57,12 @@ int main() {
 	// 乱数初期化
 	srand((unsigned int)time(nullptr));
 
+	int selectedValue = 0;
+
 	// 空の関数ポインタ定義
 	Func func;
 	// 関数ポインタに関数代入
-	func = &GetRandomValue;
-
-	int selectedValue = 0;
+	func = &DisplayResult;
 
 	while (true)
 	{
@@ -61,7 +72,7 @@ int main() {
 
 		if (selectedValue < 2) {
 			// 当たっているか
-			DispResult(func, selectedValue, 3);
+			SetTimeOut(3, func, selectedValue);
 		}
 		else {
 			// 0 ~ 1の値を入力するよう促す
